@@ -301,16 +301,16 @@ void WavWriterSampleApp::writeData()
 	// Update header with new PCM length
 	mPcmBufferPosition		*= sizeof( int16_t );
 	mPcmTotalSize			+= mPcmBufferPosition;
-	mFileHeader.bytes		= mPcmTotalSize + sizeof( AudioInput::WAVFILEHEADER );
-	mFileHeader.pcmbytes	= mPcmTotalSize;
-	mFile.seekp( 0 );
-	mFile.write( reinterpret_cast<int_fast8_t*>( &mFileHeader ), sizeof( mFileHeader ) );
+	//mFileHeader.bytes		= mPcmTotalSize + sizeof( AudioInput::WAVFILEHEADER );
+	//mFileHeader.pcmbytes	= mPcmTotalSize;
+	//mFile.seekp( 0 );
+	//mFile.write( reinterpret_cast<int_fast8_t*>( &mFileHeader ), sizeof( mFileHeader ) );
 
-	// Append PCM data
-	if ( mPcmBufferPosition > 0 ) {
-		mFile.seekp( mPcmTotalSize - mPcmBufferPosition + sizeof( AudioInput::WAVFILEHEADER ) );
-		mFile.write( reinterpret_cast<int_fast8_t*>( mPcmBuffer ), mPcmBufferPosition );
-	}
+	//// Append PCM data
+	//if ( mPcmBufferPosition > 0 ) {
+	//	mFile.seekp( mPcmTotalSize - mPcmBufferPosition + sizeof( AudioInput::WAVFILEHEADER ) );
+	//	mFile.write( reinterpret_cast<int_fast8_t*>( mPcmBuffer ), mPcmBufferPosition );
+	//}
 
 	// Reset file buffer position
 	mPcmBufferPosition = 0;

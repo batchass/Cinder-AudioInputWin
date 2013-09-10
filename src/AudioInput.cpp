@@ -106,10 +106,10 @@ bool AudioInputT<T>::error()
 	if ( mResultHnd ) {
 
 		// Report error
-		memset( mError, 0, MESSAGE_BUFFER_SIZE );
+		/*memset( mError, 0, MESSAGE_BUFFER_SIZE );
 		::waveInGetErrorTextA( mResultHnd, mError, MESSAGE_BUFFER_SIZE );
 		OutputDebugStringA( mError );
-		OutputDebugStringA( "\n" );
+		OutputDebugStringA( "\n" );*/
 		mResultHnd = 0;
 		return true;
 
@@ -144,10 +144,11 @@ DeviceList AudioInputT<T>::getDeviceList()
 
 			// Get device name
 			memset( mDeviceName, 0, sizeof( mDeviceName ) );
-			use_facet<ctype<wchar_t> >( mLocale ).narrow( device->szPname, device->szPname + wcslen( device->szPname ), 'X', & mDeviceName[ 0 ] );
+			//use_facet<ctype<wchar_t> >( mLocale ).narrow( device->szPname, device->szPname + wcslen( device->szPname ), 'X', & mDeviceName[ 0 ] );
 
 			// Add device to list
-			mDeviceList.insert( std::make_pair( i, string( mDeviceName ) ) );
+			//mDeviceList.insert( std::make_pair( i, string( mDeviceName ) ) );
+			mDeviceList.insert( std::make_pair( i, "device" ) );
 
 			// Clean up
 			delete device;
